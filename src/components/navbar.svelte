@@ -8,7 +8,7 @@
 	let current = 0;
 </script>
 
-<div class="navbar mb-5 shadow-lg">
+<div class="navbar shadow-lg">
 		<a href="/" class="logo">
 			<svg style="color: rgb(120, 53, 38);" xmlns="http://www.w3.org/2000/svg" 
 			width="32" height="32"

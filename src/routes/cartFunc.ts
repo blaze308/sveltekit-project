@@ -28,3 +28,11 @@ export const deleteFromCart = async (product: any, quantity = 1) => {
         return [...value, {...product, quantity}]
 	});
 };
+
+export const totalCart = () => {
+	let _cart: any = []
+	cart.subscribe((items: any) => _cart = items)
+	let total = _cart.reduce((sum: any, item: any) => sum + item.price * item.quantity, 0)
+	return total
+}
+

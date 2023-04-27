@@ -15,9 +15,13 @@
 		products = await getProducts();
 	});
 
+	function added() {
+		alert("item added")
+	}
+
 	let q = 1;
 
-	let total: number;
+	export let total: number;
 	$: {
 		total = 0;
 		$cart.map((item: any) => (total += item.quantity));
@@ -55,13 +59,16 @@
 
 		<div class="flex mt-auto mx-auto gap-10 pr-28">
 			<input
-				class="bg-violet-400 w-12 h-[2rem] rounded p-0.5 text-center"
+				class="bg-violet-400 w-12 h-[1.9rem] rounded p-0.5 text-center"
 				type="number"
 				name="cart_input"
 				id="cartinput"
 				bind:value={q}
 			/>
-			<button on:click={() => {addtoCart(product,q)}} class="bg-green-400 hover:bg-green-500 font-semibold w-[12rem] h-[2rem] rounded">Add to Cart</button>
+			<button on:click={() => {
+				alert(`${q} item(s) added to cart`)
+				addtoCart(product,q)
+				}} class="bg-green-400 hover:bg-green-500 font-semibold w-[12rem] h-[2rem] rounded">Add to Cart</button>
 		</div>
 	</div>
 </div>
@@ -86,6 +93,6 @@
 		padding: 0.5px;
 		-webkit-appearance: value;
 		opacity: 1;
-		height:1.7rem;
+		height:1.6rem;
 	}
 </style>
