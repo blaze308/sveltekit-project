@@ -1,7 +1,8 @@
 <script>
+// @ts-nocheck
+
 	import { enhance } from '$app/forms';
 
-    let input;
 </script>
 
 <div class="grid h-fit">
@@ -50,6 +51,7 @@
 			<div class="mb-10">
 				<label class="block font-normal text-[1rem]" for="images">Product Images*</label>
 				<div class="flex justify-start gap-10">
+                    
                     
                 </div>
 			</div>
