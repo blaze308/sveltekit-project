@@ -36,3 +36,5 @@ export const totalCart = () => {
 	return total
 }
 
+
+

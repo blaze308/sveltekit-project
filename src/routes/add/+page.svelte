@@ -1,8 +1,29 @@
 <script>
-// @ts-nocheck
+	// @ts-nocheck
 
 	import { enhance } from '$app/forms';
-
+	let input;
+    let container;
+    let image;
+    let placeholder;
+      let showImage = false;
+  
+    function onChange() {
+      const file = input.files[0];
+          
+      if (file) {
+              showImage = true;
+  
+        const reader = new FileReader();
+        reader.addEventListener("load", function (loadevent) {
+          image.setAttribute("src", reader.result);
+		//   console.log(loadevent.target.result.length);
+        });
+        reader.readAsDataURL(file);
+		return;
+	} 
+	showImage = false; 
+}
 </script>
 
 <div class="grid h-fit">
@@ -51,9 +72,15 @@
 			<div class="mb-10">
 				<label class="block font-normal text-[1rem]" for="images">Product Images*</label>
 				<div class="flex justify-start gap-10">
-                    
-                    
-                </div>
+					<input bind:this={input} on:change={onChange} type="file" name="image" />
+					<div class="imagediv" bind:this={container}>
+						{#if showImage}
+							<img class="inputImage" bind:this={image} src="" alt="Preview" />
+						{:else}
+							<span bind:this={placeholder}>Image Preview</span>
+						{/if}
+					</div>
+				</div>
 			</div>
 			<button type="submit" class="place float-right font-semibold w-[18rem] h-[3rem] rounded"
 				>Add New Product</button
@@ -62,10 +89,32 @@
 	</div>
 </div>
 
-
 <style>
-    .place {
+	.place {
 		background-color: #392faf;
-        
 	}
+
+	input::-webkit-textfield-decoration-container {
+    font-weight: bold;
+    color: dodgerblue;
+    padding: 0.5em;
+    border: thin solid grey;
+    border-radius: 3px;
+}
+
+.imagediv {
+	width: 300px;
+	min-height: 100px;
+	border: 2px solid #ddd;
+	margin-top: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+	color: #ccc;
+  }
+  .inputImage {
+	width: 100%;
+  }
 </style>
+

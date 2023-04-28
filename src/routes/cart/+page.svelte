@@ -9,6 +9,7 @@
 	function Checkout() {
 		goto("/checkout")
 	}
+
 </script>
 
 <div>
@@ -17,7 +18,7 @@
 	{#each $cart as item}
 		<div class="grid grid-cols-5 pl-10 pb-10 gap-5">
 			<img class="w-40 h-36 object-contain" src={item.image} alt="" />
-			<button class="bg-green-400 hover:bg-green-500 w-10 h-10 absolute mt-[6.5rem]">X</button>
+			<button on:click={() => {item = 0}} class="bg-green-400 hover:bg-green-500 w-10 h-10 absolute mt-[6.5rem]">X</button>
 
 			<p class="font-semibold text-left overflow-hidden w-[15rem] capitalize">{item.title}</p>
 

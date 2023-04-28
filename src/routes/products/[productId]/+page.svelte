@@ -5,6 +5,7 @@
 	import ProductCard from '../../../components/productCard.svelte';
 	import { cart } from '../../../cart';
 	import { addtoCart } from '../../cartFunc';
+	import type { Product } from '../../../app';
 	
 
 	export let data;
@@ -52,10 +53,10 @@
 			<img class="w-[7rem] h-[5rem] object-contain" src={product.image} alt="" />
 		</div>
 	</div>
-	<div class="col-span-1 w-full h-full flex flex-col gap-5">
+	<div class="col-span-1 w-full h-fit flex flex-col gap-5">
 		<p class="font-semibold text-[2rem]">{product.title}</p>
 		<p class="font-bold text-[2rem] text-lime-500">GHC {product.price}</p>
-		<p class="w-[30rem] text-xl">{product.description}</p>
+		<p class="w-[30rem] text-lg">{product.description}</p>
 
 		<div class="flex mt-auto mx-auto gap-10 pr-28">
 			<input

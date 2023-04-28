@@ -3,7 +3,12 @@
 declare global {
 	namespace App {
 		// interface Error {}
-		// interface Locals {}
+		interface Locals {
+			user: {
+				name: string
+				role: string
+			}
+		}
 		// interface PageData {}
 		// interface Platform {}
 	}
@@ -16,4 +21,8 @@ declare class Product {
 	price: number
 	title: string
 	tag: string
+}
+
+export {
+	Product, Locals
 }

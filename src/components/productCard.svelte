@@ -1,4 +1,6 @@
 <script lang="ts">
+	import type { Product } from "../app";
+
     export let product: Product = {id: 0, title: "", description: "", image: "", price: 0, tag: "" }
 </script>
 

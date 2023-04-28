@@ -192,8 +192,8 @@
 						required
 					/>
 				</div>
-                <button class="place float-right font-semibold w-[18rem] h-[3rem] rounded"
-                    >Proceed to Checkout</button
+                <button class="place float-right text-white font-semibold w-[18rem] h-[3rem] rounded"
+                    >Place Order Now</button
                 >
 			</form>
 		</div>
