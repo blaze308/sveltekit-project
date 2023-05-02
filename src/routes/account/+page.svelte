@@ -3,7 +3,6 @@
 
 	import type { Product } from '../../app';
 	import { cart } from '../../cart';
-	import ProductCard from '../../components/productCard.svelte';
 	import { page } from '$app/stores';
 
 	let active = 0;
@@ -14,7 +13,7 @@
 	});
 
 	const getProducts = async () => {
-		const res = await fetch('http://localhost:3000/products?category=electronics');
+		const res = await fetch("http://localhost:3000/products");
 		const data = await res.json();
 		console.log(data);
 

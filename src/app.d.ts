@@ -5,9 +5,9 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			user: {
-				name: string
-				role: string
-			}
+				name: string;
+				role: string;
+			};
 		}
 		// interface PageData {}
 		// interface Platform {}
@@ -15,14 +15,25 @@ declare global {
 }
 
 declare class Product {
-	id: number
-	description: string
-	image: string
-	price: number
-	title: string
-	tag: string
+	id: number;
+	userId: string;
+	title: string;
+	description: string;
+	price: number;
+	category: string;
+	image: string;
 }
 
-export {
-	Product, Locals
+declare class Order {
+	id: number;
+	total: number;
+	orderItems: [
+		{
+			price: number;
+			quantity: number;
+		}
+	];
+	userId : number
 }
+
+export { Product, Locals , Order};

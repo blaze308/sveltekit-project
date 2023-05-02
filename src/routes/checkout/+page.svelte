@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { page } from '$app/stores';
 	import type { ActionData } from './$types';
 
 	let current = true;
@@ -15,65 +16,67 @@
 
 <div class="grid grid-cols-2">
 	<div class="grid col-span-1">
-		<p class="font-bold m-10 text-4xl">Checkout Order</p>
+		<p class="font-bold mt-10 ml-10 text-4xl">Checkout Order</p>
 
-		<!-- login detail -->
-		<div class="flex flex-col ml-10">
-			<div class="flex flex-col rounded-sm shadow-lg shadow-slate-300 h-[28rem] w-[34rem]">
-				<!-- button div for switch -->
-				<div class="flex justify-between w-full h-10">
-					<button on:click={toggleTrue} class="loginBtn h-14 rounded-tl-sm w-full"
-						><p>Login</p></button
-					>
-					<button on:click={toggleFalse} class="signupBtn h-14 rounded-tr-sm w-full"
-						><p>Signup</p>
-					</button>
-				</div>
+		{#if !$page.data.user}
+			<!-- login detail -->
+			<div class="flex flex-col ml-10">
+				<div class="flex flex-col rounded-sm shadow-lg shadow-slate-300 h-[28rem] w-[34rem]">
+					<!-- button div for switch -->
+					<div class="flex justify-between w-full h-10">
+						<button on:click={toggleTrue} class="loginBtn h-14 rounded-tl-sm w-full"
+							><p>Login</p></button
+						>
+						<button on:click={toggleFalse} class="signupBtn h-14 rounded-tr-sm w-full"
+							><p>Signup</p>
+						</button>
+					</div>
 
-				{#if form?.user}
-					<p class="text-red-600">Username is taken</p>
-				{/if}
+					{#if form?.user}
+						<p class="text-red-600">Username is taken</p>
+					{/if}
 
-				{#if form?.invalid}
-					<p class="text-red-600">Username and Email required</p>
-				{/if}
+					{#if form?.invalid}
+						<p class="text-red-600">Username and Email required</p>
+					{/if}
 
-				{#if form?.credentials}
-					<p class="text-red-600">Invalid Credentials</p>
-				{/if}
-				{#if form?.success}
-					<p class="text-red-600">Account Created</p>
-				{/if}
+					{#if form?.credentials}
+						<p class="text-red-600">Invalid Credentials</p>
+					{/if}
+					{#if form?.success}
+						<p class="text-red-600">Account Created</p>
+					{/if}
 
-				<!-- form div -->
-				{#if current === true}
-					<div class="p-10 flex">
-						<form class="" method="POST" action="?/login" use:enhance>
-							<div class="mb-10">
-								<label class="block font-normal text-[1rem]" for="login_username"
-									>Username / Email Address*</label
-								>
-								<input
-									class="w-[28.3rem] h-[2.8rem] rounded-lg border-2"
-									type="text"
-									id="login_username"
-									name="login_username"
-									required
-								/>
-							</div>
+					<!-- form div -->
+					{#if current === true}
+						<div class="p-10 flex">
+							<form class="" method="POST" action="?/login" use:enhance>
+								<div class="mb-10">
+									<label class="block font-normal text-[1rem]" for="login_username"
+										>Username / Email Address*</label
+									>
+									<input
+										class="w-[28.3rem] h-[2.8rem] rounded-lg border-2"
+										type="text"
+										id="login_username"
+										name="login_username"
+										required
+									/>
+								</div>
 
-							<div class="">
-								<label class="block font-normal text-[1rem]" for="login_password">Password*</label>
-								<input
-									class="w-[28.3rem] h-[2.8rem] rounded-lg border-2"
-									type="password"
-									id="login_password"
-									name="login_password"
-									required
-								/>
-							</div>
+								<div class="">
+									<label class="block font-normal text-[1rem]" for="login_password">Password*</label
+									>
+									<input
+										class="w-[28.3rem] h-[2.8rem] rounded-lg border-2"
+										type="password"
+										id="login_password"
+										name="login_password"
+										required
+									/>
+								</div>
 
-							<!-- <div class="flex flex-col">
+								<!-- <div class="flex flex-col">
 								<a href="/reset" class="reset inline-block mt-2.5 ml-auto hover:underline"
 									>Forgot Password?</a
 								>
@@ -89,46 +92,50 @@
 									>
 								</p>
 							</div> -->
-						</form>
-					</div>
-				{:else}
-					<div class="p-8 flex">
-						<form class="" method="POST" action="?/signup" use:enhance>
-							<div class="mb-2">
-								<label class="block font-normal text-[1rem]" for="signup_username">Username*</label>
-								<input
-									class="w-[28.3rem] h-[2.8rem] rounded-lg border-2"
-									type="text"
-									id="signup_username"
-									name="signup_username"
-									required
-								/>
-							</div>
-							<div class="mb-2">
-								<label class="block font-normal text-[1rem]" for="signup_email"
-									>Email Address*</label
-								>
-								<input
-									class="w-[28.3rem] h-[2.8rem] rounded-lg border-2"
-									type="email"
-									id="signup_email"
-									name="signup_email"
-									required
-								/>
-							</div>
+							</form>
+						</div>
+					{:else}
+						<div class="p-8 flex">
+							<form class="" method="POST" action="?/signup" use:enhance>
+								<div class="mb-2">
+									<label class="block font-normal text-[1rem]" for="signup_username"
+										>Username*</label
+									>
+									<input
+										class="w-[28.3rem] h-[2.8rem] rounded-lg border-2"
+										type="text"
+										id="signup_username"
+										name="signup_username"
+										required
+									/>
+								</div>
+								<div class="mb-2">
+									<label class="block font-normal text-[1rem]" for="signup_email"
+										>Email Address*</label
+									>
+									<input
+										class="w-[28.3rem] h-[2.8rem] rounded-lg border-2"
+										type="email"
+										id="signup_email"
+										name="signup_email"
+										required
+									/>
+								</div>
 
-							<div class="">
-								<label class="block font-normal text-[1rem]" for="signup_password">Password*</label>
-								<input
-									class="w-[28.3rem] h-[2.8rem] rounded-lg border-2"
-									type="password"
-									id="signup_password"
-									name="signup_password"
-									required
-								/>
-							</div>
+								<div class="">
+									<label class="block font-normal text-[1rem]" for="signup_password"
+										>Password*</label
+									>
+									<input
+										class="w-[28.3rem] h-[2.8rem] rounded-lg border-2"
+										type="password"
+										id="signup_password"
+										name="signup_password"
+										required
+									/>
+								</div>
 
-							<!-- <div class="flex flex-col">
+								<!-- <div class="flex flex-col">
 								<button
 									type="submit"
 									class="bg-white hover:shadow-2xl hover:shadow-slate-400 h-14 rounded-lg shadow-lg border-2 text-[1.7rem] font-semibold shadow-slate-300 mt-8 w-[25rem] m-auto"
@@ -139,22 +146,32 @@
 									<button on:click={toggleTrue} class="reset hover:underline">Login</button>
 								</p>
 							</div> -->
-						</form>
-					</div>
-				{/if}
+							</form>
+						</div>
+					{/if}
+				</div>
 			</div>
-		</div>
+		{:else}
+			<div class="m-auto">
+				<img
+					class="w-[37rem] h-[30rem] object-cover"
+					src="https://images.unsplash.com/photo-1605902711834-8
+					b11c3e3ef2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY
+					2h8NXx8ZWNvbW1lcmNlfGVufDB8MXwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+					alt="logo_image"
+				/>
+			</div>
+		{/if}
 
-
-		<div class="flex flex-col m-10 mt-[6rem]">
-			<p>Payment method</p>
+		<div class="flex flex-col ml-10">
+			<p class="text-xl font-semibold">Payment Method</p>
 			<p>Cash on delivery with 5% shipping fee</p>
 		</div>
 	</div>
-	<div class="col-span-1 m-10 h-fit">
+	<div class="col-span-1 m-10">
 		<p class="font-semibold py-5 text-lg">Shipping Address</p>
-		<div class="flex ">
-			<form class="" method="POST" action="?/ship" use:enhance>
+		<div class="flex">
+			<form class="" method="POST" action="?/order" use:enhance>
 				<div class="mb-10">
 					<label class="block font-normal text-[1rem]" for="address">Address*</label>
 					<input
@@ -186,17 +203,19 @@
 					/>
 				</div>
 				<div class="mb-10">
-					<label class="block font-normal text-[1rem]" for="country">Country*</label>
+					<label class="block font-normal text-[1rem]" for="country">Order Note</label>
 					<textarea
-						class="w-[28.3rem] h-[9rem] rounded-lg border-2"
-						id="country"
-						name="country"
+						class="w-[28.3rem] h-[10rem] rounded-lg border-2"
+						id="order"
+						name="order"
 						required
 					/>
 				</div>
-                <button class="place float-right text-white font-semibold w-[18rem] h-[3rem] rounded"
-                    >Place Order Now</button
-                >
+				<button
+					type="submit"
+					class="place float-right text-white font-semibold w-[18rem] h-[3rem] rounded"
+					>Place Order Now</button
+				>
 			</form>
 		</div>
 	</div>
@@ -223,12 +242,11 @@
 	.signupBtn:hover {
 		background-color: #f34949;
 	}
-	.reset {
+	/* .reset {
 		color: #60279a;
 		font-size: 15px;
-	}
+	} */
 	.place {
 		background-color: #392faf;
-        
 	}
 </style>

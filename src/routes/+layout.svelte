@@ -3,7 +3,6 @@
 	import { page } from '$app/stores';
 	import '../app.css';
 	import NavbarLoggedIn from '../components/navbarLoggedIn.svelte';
-	import Navbar from '../components/navbarLoggedIn.svelte';
 </script>
 
 <!-- <NavbarLoggedIn/>

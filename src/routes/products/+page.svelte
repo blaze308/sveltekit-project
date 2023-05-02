@@ -3,6 +3,7 @@
 import { onMount } from "svelte";
 	import Fab from "../../components/fab.svelte";
 	import ProductCard from "../../components/productCard.svelte";
+	import type { Product } from "../../app";
       
     let products: Product[] = [];
     onMount(async () => {
@@ -10,6 +11,7 @@ import { onMount } from "svelte";
     });
   
     const getProducts = async () => {
+      // const res = await fetch("https://fakestoreapi.com/products");
       const res = await fetch("http://localhost:3000/products");
       const data = await res.json();
       console.log(data);

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Product } from "../app";
 
-    export let product: Product = {id: 0, title: "", description: "", image: "", price: 0, tag: "" }
+    export let product: Product = {id: 0, title: "", description: "", image: "", price: 0, category: "" ,userId: ""}
 </script>
 
 <div class=" inline-block sm:p-3 md:m-3 md:p-2">

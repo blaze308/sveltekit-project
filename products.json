@@ -239,51 +239,11 @@
         "rate": 3.6,
         "count": 145
       }
-    },
+    }
+  ],
+  "orders": [
     {
-      "title": "New York Yankees Tshirt",
-      "price": "24",
-      "description": "New york shirt",
-      "tags": "Shirt",
-      "id": 21
-    },
-    {
-      "title": "new",
-      "price": "24",
-      "description": "asfa",
-      "tags": "Shirt",
-      "id": 22
-    },
-    {
-      "title": "afaf",
-      "price": "34",
-      "description": "asfsfalf;",
-      "tags": "asf",
-      "id": 23
-    },
-    {
-      "title": "prod",
-      "price": "45",
-      "description": "af",
-      "tags": "af",
-      "image": {},
-      "id": 24
-    },
-    {
-      "title": "main",
-      "price": "3253",
-      "description": "afs",
-      "tags": "qaf",
-      "image": null,
-      "id": 25
-    },
-    {
-      "title": "na",
-      "price": "23",
-      "description": "af",
-      "tags": "af",
-      "image": {},
-      "id": 26
+      "id": 1
     }
   ]
 }
