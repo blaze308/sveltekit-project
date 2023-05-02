@@ -73,7 +73,7 @@
 								/>
 							</div>
 
-							<div class="flex flex-col">
+							<!-- <div class="flex flex-col">
 								<a href="/reset" class="reset inline-block mt-2.5 ml-auto hover:underline"
 									>Forgot Password?</a
 								>
@@ -88,7 +88,7 @@
 										>Create Account</button
 									>
 								</p>
-							</div>
+							</div> -->
 						</form>
 					</div>
 				{:else}
@@ -128,7 +128,7 @@
 								/>
 							</div>
 
-							<div class="flex flex-col">
+							<!-- <div class="flex flex-col">
 								<button
 									type="submit"
 									class="bg-white hover:shadow-2xl hover:shadow-slate-400 h-14 rounded-lg shadow-lg border-2 text-[1.7rem] font-semibold shadow-slate-300 mt-8 w-[25rem] m-auto"
@@ -138,12 +138,14 @@
 									Already a User?
 									<button on:click={toggleTrue} class="reset hover:underline">Login</button>
 								</p>
-							</div>
+							</div> -->
 						</form>
 					</div>
 				{/if}
 			</div>
 		</div>
+
+
 		<div class="flex flex-col m-10 mt-[6rem]">
 			<p>Payment method</p>
 			<p>Cash on delivery with 5% shipping fee</p>

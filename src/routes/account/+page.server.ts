@@ -47,7 +47,8 @@ const edit: Action = async ({ request }) => {
 };
 
 
-const deleteprod: Action = async ({request}) => {
+const del: Action = async ({request}) => {
+    const data = await request.formData()
     await fetch("http://localhost:3000/products", {
       method: "DELETE",
       headers: {
@@ -60,4 +61,4 @@ const deleteprod: Action = async ({request}) => {
 
 }
 
-export const actions: Actions = { edit }
+export const actions: Actions = { edit, del }

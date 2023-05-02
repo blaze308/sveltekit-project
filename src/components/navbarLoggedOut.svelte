@@ -33,6 +33,9 @@
 				<a class:current={current === 0} on:click={() => (current = 0)} href="/">Home</a>
 			</li>
 			<li on:keydown on:click={() => (open = false)}>
+				<a class:current={current === 2} on:click={() => (current = 2)} href="/cart">Cart</a>
+			</li>
+			<li on:keydown on:click={() => (open = false)}>
 				<a class:current={current === 3} on:click={() => (current = 3)} href="/login">Login</a>
 			</li>
 

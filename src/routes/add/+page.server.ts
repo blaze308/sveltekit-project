@@ -1,4 +1,3 @@
-import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types.js';
 
 export const load: PageServerLoad = async ({ locals }) => {
@@ -12,7 +11,8 @@ export const load: PageServerLoad = async ({ locals }) => {
 };
 
 export const actions = {
-	add: async ({ request }) => {
+	add: async ({ request, cookies }) => {
+		cookies.get("session")
 		const data = await request.formData();
 		const title = data.get('title');
 		const price = data.get('price');
@@ -20,7 +20,7 @@ export const actions = {
 		const tags = data.get('tags');
 		const description = data.get('description');
 
-		await fetch('http://localhost:3000/products', {
+		await fetch('http://localhost:3000/products/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

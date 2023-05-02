@@ -44,7 +44,7 @@
 		>
 	</div>
 
-	{#if active === 3}
+	{#if active === 0}
 		{#each $cart as item}
 			<div class="grid grid-cols-5 pb-10 gap-5">
 				<img class="w-40 h-36 object-contain" src={item.image} alt="" />
@@ -63,7 +63,7 @@
 				<p class="font-bold text-lg text-lime-500">GHC {(item.price * item.quantity).toFixed(2)}</p>
 			</div>
 		{/each}
-	{:else if active === 0}
+	{:else if active === 1}
 		{#if $page.data.user.role === 'ADMIN'}
 			<div class="grid grid-cols-4">
 				{#each products as product}
@@ -80,13 +80,13 @@
 									>
 									<img class=" object-contain w-fill h-64 p-4" src={product.image} alt="" />
 
-									<div class="flex gap-5 h-[2rem] w-[10rem] justify-evenly edit">
+									<div class="flex gap-5 h-[2rem] w-[10rem] justify-center edit">
 										<form action="?/patch" class="pt-1">
 											<button type="submit" class="hover:scale-110 text-white">Edit</button>
 										</form>
-										<p class="text-white">|</p>
-										<form action="?/deleteprod" class="pt-1" method="POST">
-											<button on:click={() => {confirm("do you want to delete")}} class="hover:scale-110 text-white">Delete</button>
+										<p class="text-white p-1">|</p>
+										<form action="/del" class="pt-1" method="POST">
+											<button type="submit" on:click={() => {confirm("do you want to delete")}} class="hover:scale-110 text-white">Delete</button>
 										</form>
 									</div>
 									<p class="ml-auto pr-6 m-2 font-bold text-lg text-lime-500">
@@ -150,7 +150,7 @@
 				</div>
 				<button
 					type="submit"
-					class="place float-right mr-[10rem] font-semibold w-[18rem] h-[3rem] rounded"
+					class="place text-white float-right mr-[10rem] font-semibold w-[18rem] h-[3rem] rounded"
 					>Update My Details</button
 				>
 			</div>
